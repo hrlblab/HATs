@@ -182,7 +182,7 @@ HATs_matrix[13, 14] = 2  #14_smooth
 ......
 ```
 
-# How to define Anatomy Loss
+## How to define Anatomy Loss
 ```python
 def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, loss_seg_DICE, loss_seg_CE, term_seg_Dice, term_seg_BCE, term_all, HATs_matrix, semi_ratio, area_ratio):
 
