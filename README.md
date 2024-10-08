@@ -23,3 +23,10 @@ Our approach entails <br />
 (2) the incorporation of anatomical hierarchies and scale considerations into a unified simple matrix representation for all panoramic entities, <br />
 (3) the adoption of the latest AI foundation model (EfficientSAM) as a feature extraction tool to boost the model’s adaptability, yet eliminating the need for manual prompt generation in conventional segment anything model (SAM). Experimental findings demonstrate that the HATs method offers an efficient and effective strategy for integrating clinical insights and imaging precedents into a unified segmentation model across more than 15 categories. 
 
+## Model Training
+1. Use [Dataset_save_csv.py](https://github.com/hrlblab/HATs/blob/main/Dataset_save_csv.py) to generate data list csv.
+1. Use [train_EfficientSAM_HATs.py](https://github.com/hrlblab/HATs/blob/main/train_EfficientSAM_HATs.py) to train the model.
+2. Use [Testing_EfficientSAM.py](https://github.com/hrlblab/HATs/blob/main/Testing_EfficientSAM.py) to test the model.
+
+
+
