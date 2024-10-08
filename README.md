@@ -67,6 +67,12 @@ Area[12] = 0.001
 Area[13] = 0.001
 Area[14] = 0.002
 
+def division_ratio(a, b):
+	if a > b:
+		return b / a
+	else:
+		return a / b
+
 Area_ratio = np.zeros((15, 15))
 for xi in range(0,15):
     for yi in range(0,15):
