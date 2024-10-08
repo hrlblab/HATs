@@ -6,12 +6,12 @@
 This is the official implementation of HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis. <br />
 
 **CVPR 2024 Paper** <br />
-> [Omni-Seg: A Scale-aware Dynamic Network for Pathological Image Segmentation](https://ieeexplore.ieee.org/document/10079171) <br />
+> [PrPSeg: Universal Proposition Learning for Panoramic Renal Pathology Segmentation](https://openaccess.thecvf.com/content/CVPR2024/html/Deng_PrPSeg_Universal_Proposition_Learning_for_Panoramic_Renal_Pathology_Segmentation_CVPR_2024_paper.html) <br />
 > Ruining Deng, Quan Liu, Can Cui, Tianyuan Yao, Jialin Yue, Juming Xiong, Lining Yu, Yifei Wu, Mengmeng Yin, Yu Wang, Shilin Zhao, Yucheng Tang, Haichun Yang, Yuankai Huo. <br />
 > *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition * <br />
 
 **MICCAI 2024 Paper** <br />
-> [Omni-Seg: A Single Dynamic Network for Multi-label Renal Pathology Image Segmentation using Partially Labeled Data](https://openreview.net/pdf?id=v-z4Zxkt9Ex) <br />
+> [HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis](https://papers.miccai.org/miccai-2024/374-Paper1451.html) <br />
 >  Deng, Ruining and Liu, Quan and Cui, Can and Yao, Tianyuan and Xiong, Juming and Bao, Shunxing and Li, Hao and Yin, Mengmeng and Wang, Yu and Zhao, Shilin and Tang, Yucheng and Yang, Haichun and Huo, Yuankai. <br />
 > *Proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024* <br />
 
