@@ -29,4 +29,27 @@ Our approach entails <br />
 2. Use [Testing_EfficientSAM.py](https://github.com/hrlblab/HATs/blob/main/Testing_EfficientSAM.py) to test the model.
 
 
+## Citation
+```
+@InProceedings{Deng_2024_CVPR,
+    author    = {Deng, Ruining and Liu, Quan and Cui, Can and Yao, Tianyuan and Yue, Jialin and Xiong, Juming and Yu, Lining and Wu, Yifei and Yin, Mengmeng and Wang, Yu and Zhao, Shilin and Tang, Yucheng and Yang, Haichun and Huo, Yuankai},
+    title     = {PrPSeg: Universal Proposition Learning for Panoramic Renal Pathology Segmentation},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {11736-11746}
+}
 
+@InProceedings{Den_HATs_MICCAI2024,
+        author = { Deng, Ruining and Liu, Quan and Cui, Can and Yao, Tianyuan and Xiong, Juming and Bao, Shunxing and Li, Hao and Yin, Mengmeng and Wang, Yu and Zhao, Shilin and Tang, Yucheng and Yang, Haichun and Huo, Yuankai},
+        title = { { HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis } },
+        booktitle = {proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024},
+        year = {2024},
+        publisher = {Springer Nature Switzerland},
+        volume = {LNCS 15004},
+        month = {October},
+        page = {pending}
+}
+
+
+```
