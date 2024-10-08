@@ -3,7 +3,6 @@
 ### [[Project Page]](https://github.com/hrlblab/HATs)   [[CVPR 2024 Paper]](https://openaccess.thecvf.com/content/CVPR2024/html/Deng_PrPSeg_Universal_Proposition_Learning_for_Panoramic_Renal_Pathology_Segmentation_CVPR_2024_paper.html) [[MICCAI 2024 paper]](https://papers.miccai.org/miccai-2024/374-Paper1451.html)<br />
 
 ![Overview](https://github.com/hrlblab/HATs/blob/main/Overview.png)<br />
-![HATs](https://github.com/hrlblab/HATs/blob/main/HATs.png)<br />
 
 This is the official implementation of HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis. <br />
 
@@ -16,6 +15,8 @@ This is the official implementation of HATs: Hierarchical Adaptive Taxonomy Segm
 > [HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis](https://papers.miccai.org/miccai-2024/374-Paper1451.html) <br />
 >  Deng, Ruining and Liu, Quan and Cui, Can and Yao, Tianyuan and Xiong, Juming and Bao, Shunxing and Li, Hao and Yin, Mengmeng and Wang, Yu and Zhao, Shilin and Tang, Yucheng and Yang, Haichun and Huo, Yuankai. <br />
 > *Proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024 * <br />
+
+![HATs](https://github.com/hrlblab/HATs/blob/main/HATs.png)<br />
 
 ## Abstract
 Panoramic image segmentation in computational pathology presents a remarkable challenge due to the morphologically complex and variably scaled anatomy. For instance, the intricate organization in kidney pathology spans multiple layers, from regions like the cortex and medulla to functional units such as glomeruli, tubules, and vessels, down to various cell types. In this paper, we propose a novel Hierarchical Adaptive Taxonomy Segmentation (HATs) method, which is designed to thoroughly segment panoramic views of kidney structures by leveraging detailed anatomical insights. 
@@ -44,7 +45,7 @@ model.image_encoder.requires_grad_(False)
 ```
 
 2. a token-based CNN backbone from PrPSeg: <br />
-[TokenOmniSeg](https://github.com/hrlblab/HATs/blob/main/TokenOmniSeg.png)<br />
+![TokenOmniSeg](https://github.com/hrlblab/HATs/blob/main/TokenOmniSeg.png)<br />
 ```python
 from unet2D_Dodnet_scale_token import UNet2D as UNet2D_scale
 
