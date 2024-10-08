@@ -193,7 +193,7 @@ def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, l
 
 		semi_preds = model(images, torch.ones(batch_size).cuda() * now_task_semi, scales)
 
-		'Only use dice rather than bce in semi-supervised learning'
+		'Only use dice in semi-supervised learning'
 
 		if now_relative == 1:
 			semi_labels = 1 - labels                        # Background from this label should not have any overlap with the pred, --> 0
@@ -201,7 +201,6 @@ def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, l
 			semi_seg_Dice, semi_seg_BCE, semi_all = get_loss(images, semi_preds, semi_labels, weight, loss_seg_DICE, loss_seg_CE)
 			term_seg_Dice -= semi_ratio * semi_seg_Dice * now_area_ratio
 			term_all -= semi_ratio * semi_seg_Dice * now_area_ratio
-
 
 		elif now_relative == -1:
 			semi_labels = labels
@@ -220,7 +219,6 @@ def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, l
 
 	return term_seg_Dice, term_seg_BCE, term_all
 ```
-
 
 ## Citation
 ```
@@ -243,5 +241,4 @@ def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, l
         month = {October},
         page = {pending}
 }
-
 ```
