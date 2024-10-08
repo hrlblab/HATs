@@ -31,7 +31,7 @@ Our approach entails <br />
 ## How to define the segmentation model
 We provide two model backbones: <br />
 1. A dynamic EfficientSAM backbone from HATs: <br />
-```
+```python
 import os, sys
 sys.path.append("/Data4/HATs/EfficientSAM_token_dynamichead_logits")
 from efficient_sam.build_efficient_sam import build_efficient_sam_vitt, build_efficient_sam_vits
