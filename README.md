@@ -168,17 +168,7 @@ HATs_matrix[13, 11] = 2  #11_mv
 HATs_matrix[13, 12] = 2  #12_pod
 HATs_matrix[13, 14] = 2  #14_smooth
 
-'14_smooth'
-HATs_matrix[14, 5] = 2  #5_dt
-HATs_matrix[14, 6] = 2  #6_pt
-HATs_matrix[14, 7] = 2  #7_cap
-HATs_matrix[14, 8] = 2  #8_tuft
-HATs_matrix[14, 9] = -1  #9_art     smooth is covered by art
-HATs_matrix[14, 10] = 2  #10_ptc
-HATs_matrix[14, 11] = 2  #11_mv
-
-HATs_matrix[14, 12] = 2  #12_pod
-HATs_matrix[14, 13] = 2  #13_mes
+......
 ```
 
 # How to define Anatomy Loss
