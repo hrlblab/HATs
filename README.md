@@ -13,7 +13,7 @@ This is the official implementation of HATs: Hierarchical Adaptive Taxonomy Segm
 **MICCAI 2024 Paper** <br />
 > [HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis](https://papers.miccai.org/miccai-2024/374-Paper1451.html) <br />
 >  Deng, Ruining and Liu, Quan and Cui, Can and Yao, Tianyuan and Xiong, Juming and Bao, Shunxing and Li, Hao and Yin, Mengmeng and Wang, Yu and Zhao, Shilin and Tang, Yucheng and Yang, Haichun and Huo, Yuankai. <br />
-> *Proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024* <br />
+> *Proceedings of Medical Image Computing and Computer Assisted Intervention -- MICCAI 2024 * <br />
 
 ## Abstract
 Panoramic image segmentation in computational pathology presents a remarkable challenge due to the morphologically complex and variably scaled anatomy. For instance, the intricate organization in kidney pathology spans multiple layers, from regions like the cortex and medulla to functional units such as glomeruli, tubules, and vessels, down to various cell types. In this paper, we propose a novel Hierarchical Adaptive Taxonomy Segmentation (HATs) method, which is designed to thoroughly segment panoramic views of kidney structures by leveraging detailed anatomical insights. 
