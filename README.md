@@ -28,6 +28,25 @@ Our approach entails <br />
 1. Use [train_EfficientSAM_HATs.py](https://github.com/hrlblab/HATs/blob/main/train_EfficientSAM_HATs.py) to train the model.
 2. Use [Testing_EfficientSAM.py](https://github.com/hrlblab/HATs/blob/main/Testing_EfficientSAM.py) to test the model.
 
+## How to define the segmentation model
+We provide two model backbones: <br />
+1. A dynamic EfficientSAM backbone from HATs: <br />
+```
+import os, sys
+sys.path.append("/Data4/HATs/EfficientSAM_token_dynamichead_logits")
+from efficient_sam.build_efficient_sam import build_efficient_sam_vitt, build_efficient_sam_vits
+
+model = build_efficient_sam_vits(task_num = 15, scale_num = 4)
+model.image_encoder.requires_grad_(False)
+```
+
+2. a token-based CNN backbone from PrPSeg: <br />
+```
+from unet2D_Dodnet_scale_token import UNet2D as UNet2D_scale
+
+model = UNet2D_scale(num_classes=15, num_scale = 4, weight_std=False)
+```
+
 
 ## Citation
 ```
@@ -50,6 +69,5 @@ Our approach entails <br />
         month = {October},
         page = {pending}
 }
-
 
 ```
