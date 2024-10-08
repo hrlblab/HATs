@@ -3,6 +3,7 @@
 ### [[Project Page]](https://github.com/hrlblab/HATs)   [[CVPR 2024 Paper]](https://openaccess.thecvf.com/content/CVPR2024/html/Deng_PrPSeg_Universal_Proposition_Learning_for_Panoramic_Renal_Pathology_Segmentation_CVPR_2024_paper.html) [[MICCAI 2024 paper]](https://papers.miccai.org/miccai-2024/374-Paper1451.html)<br />
 
 ![Overview](https://github.com/hrlblab/HATs/blob/main/Overview.png)<br />
+![HATs](https://github.com/hrlblab/HATs/blob/main/HATs.png)<br />
 
 This is the official implementation of HATs: Hierarchical Adaptive Taxonomy Segmentation for Panoramic Pathology Image Analysis. <br />
 
@@ -32,6 +33,7 @@ Our approach entails <br />
 ## How to define the segmentation model
 We provide two model backbones: <br />
 1. a dynamic EfficientSAM backbone from HATs: <br />
+![DynamicEfficientSAM](https://github.com/hrlblab/HATs/blob/main/DynamicEfficientSAM.png)<br />
 ```python
 import os, sys
 sys.path.append("/Data4/HATs/EfficientSAM_token_dynamichead_logits")
@@ -42,6 +44,7 @@ model.image_encoder.requires_grad_(False)
 ```
 
 2. a token-based CNN backbone from PrPSeg: <br />
+[TokenOmniSeg](https://github.com/hrlblab/HATs/blob/main/TokenOmniSeg.png)<br />
 ```python
 from unet2D_Dodnet_scale_token import UNet2D as UNet2D_scale
 
