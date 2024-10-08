@@ -41,10 +41,268 @@ model.image_encoder.requires_grad_(False)
 ```
 
 2. a token-based CNN backbone from PrPSeg: <br />
-```
+```python
 from unet2D_Dodnet_scale_token import UNet2D as UNet2D_scale
 
 model = UNet2D_scale(num_classes=15, num_scale = 4, weight_std=False)
+```
+
+## How to define the Hierarchical Adaptive Taxonomy matrices
+1. Hierarchical Scale Matrix 
+```python
+Area = np.zeros((15))
+Area[0] = 2.434
+Area[1] = 2.600
+Area[2] = 1.760
+Area[3] = 1.853
+Area[4] = 1.844
+Area[5] = 0.097
+Area[6] = 0.360
+Area[7] = 0.619
+Area[8] = 0.466
+Area[9] = 0.083
+Area[10] = 0.002
+Area[11] = 0.012
+Area[12] = 0.001
+Area[13] = 0.001
+Area[14] = 0.002
+
+Area_ratio = np.zeros((15, 15))
+for xi in range(0,15):
+    for yi in range(0,15):
+        Area_ratio[xi,yi] = division_ratio(Area[xi], Area[yi])
+```
+
+2. Hierarchical Taxonomy Matrix
+```python
+HATs_matrix = np.zeros((15, 15))
+'0_medulla'
+HATs_matrix[0, 1] = 2  # 1_cortex
+HATs_matrix[0, 2] = 2  # 2_cortexin
+HATs_matrix[0, 3] = 2  # 3_cortexmiddle
+HATs_matrix[0, 4] = 2  # 4_cortexout
+
+HATs_matrix[0, 7] = 2  #7_cap
+HATs_matrix[0, 8] = 2  #8_tuft
+HATs_matrix[0, 10] = 2  #10_ptc
+HATs_matrix[0, 11] = 1  #11_mv    medulla cover mv
+
+HATs_matrix[0, 12] = 2  #12_pod
+HATs_matrix[0, 13] = 2  #13_mes
+
+'1_cortex'
+HATs_matrix[1, 0] = 2  #0_medulla
+HATs_matrix[1, 2] = 1  # 2_cortexin cortex cover cortexin
+HATs_matrix[1, 3] = 1  # 3_cortexmiddle cortex cover cortexmiddle
+HATs_matrix[1, 4] = 1  # 4_cortexout cortex cover cortexout
+
+HATs_matrix[1, 7] = 1  # 7_cap cortex cover cap
+HATs_matrix[1, 8] = 1  # 8_tuft cortex cover tuft
+HATs_matrix[1, 10] = 1  # 10_ptc cortex cover ptc
+HATs_matrix[1, 11] = 2  # 11_mv
+
+HATs_matrix[1, 12] = 1  #12_pod cortex cover pod
+HATs_matrix[1, 13] = 1  #13_mes cortex cover mes
+
+'2_cortexin'
+HATs_matrix[2, 0] = 2  #0_medulla
+HATs_matrix[2, 1] = -1  # 1_cortex cortexin is covered by cortex
+HATs_matrix[2, 3] = 2
+HATs_matrix[2, 4] = 2
+
+'3_cortexmiddle'
+HATs_matrix[3, 0] = 2  #0_medulla
+HATs_matrix[3, 1] = -1  # 1_cortex cortexmiddle is covered by cortex
+HATs_matrix[3, 2] = 2
+HATs_matrix[3, 4] = 2
+
+'4_cortexout'
+HATs_matrix[4, 0] = 2  #0_medulla
+HATs_matrix[4, 1] = -1  # 1_cortex cortexout is covered by cortex
+HATs_matrix[4, 2] = 2
+HATs_matrix[4, 3] = 2
+
+'5_dt'
+HATs_matrix[5, 6] = 2  #6_pt
+HATs_matrix[5, 7] = 2  #7_cap
+HATs_matrix[5, 8] = 2  #8_tuft
+HATs_matrix[5, 9] = 2  #9_art
+HATs_matrix[5, 10] = 2  #10_ptc
+HATs_matrix[5, 11] = 2  #11_mv
+
+HATs_matrix[5, 12] = 2  #12_pod
+HATs_matrix[5, 13] = 2  #13_mes
+HATs_matrix[5, 14] = 2  #14_smooth
+
+'6_pt'
+HATs_matrix[6, 5] = 2  #5_dt
+HATs_matrix[6, 7] = 2  #7_cap
+HATs_matrix[6, 8] = 2  #8_tuft
+HATs_matrix[6, 9] = 2  #9_art
+HATs_matrix[6, 10] = 2  #10_ptc
+HATs_matrix[6, 11] = 2  #11_mv
+
+HATs_matrix[6, 12] = 2  #12_pod
+HATs_matrix[6, 13] = 2  #13_mes
+HATs_matrix[6, 14] = 2  #14_smooth
+
+'7_cap'
+HATs_matrix[7, 0] = 2  #0_medulla
+HATs_matrix[7, 1] = -1  #1_cortex  cap is covered by cortex but don't know between in/middle/out
+
+HATs_matrix[7, 5] = 2  #5_dt
+HATs_matrix[7, 6] = 2  #6_pt
+HATs_matrix[7, 8] = 1  #8_tuft  cap covers tuft
+HATs_matrix[7, 9] = 2  #9_art
+HATs_matrix[7, 10] = 2  #10_ptc
+HATs_matrix[7, 11] = 2  #11_mv
+
+HATs_matrix[7, 12] = 1  #12_pod   cap cover pod
+HATs_matrix[7, 13] = 1  #13_mes   cap cover mes
+HATs_matrix[7, 14] = 2  #14_smooth
+
+'8_tuft'
+HATs_matrix[8, 0] = 2  #0_medulla
+HATs_matrix[8, 1] = -1  #1_cortex  tuft is covered by cortex but don't know between in/middle/out
+
+HATs_matrix[8, 5] = 2  #5_dt
+HATs_matrix[8, 6] = 2  #6_pt
+HATs_matrix[8, 7] = -1  #7_cap  tuft is covered by cap
+HATs_matrix[8, 9] = 2  #9_art
+HATs_matrix[8, 10] = 2  #10_ptc
+HATs_matrix[8, 11] = 2  #11_mv
+
+HATs_matrix[8, 12] = 1  #12_pod   tuft cover pod
+HATs_matrix[8, 13] = 1  #13_mes   tuft cover mes
+HATs_matrix[8, 14] = 2  #14_smooth
+
+'9_art'
+HATs_matrix[9, 5] = 2  #5_dt
+HATs_matrix[9, 6] = 2  #6_pt
+HATs_matrix[9, 7] = 2  #7_cap
+HATs_matrix[9, 8] = 2  #8_tuft
+HATs_matrix[9, 10] = 2  #10_ptc
+HATs_matrix[9, 11] = 2  #11_mv
+
+HATs_matrix[9, 12] = 2  #12_pod
+HATs_matrix[9, 13] = 2  #13_mes
+HATs_matrix[9, 14] = 1  #14_smooth art cover smooth
+
+'10_ptc'
+HATs_matrix[10, 0] = 2  #0_medulla
+HATs_matrix[10, 1] = -1  #1_cortex  PTC is covered by cortex but don't know between in/middle/out
+
+HATs_matrix[10, 5] = 2  #5_dt
+HATs_matrix[10, 6] = 2  #6_pt
+HATs_matrix[10, 7] = 2  #7_cap
+HATs_matrix[10, 8] = 2  #8_tuft
+HATs_matrix[10, 9] = 2  #9_art
+HATs_matrix[10, 11] = 2  #11_mv
+
+HATs_matrix[10, 12] = 2  #12_pod
+HATs_matrix[10, 13] = 2  #13_mes
+HATs_matrix[10, 14] = 2  #14_smooth
+
+'11_mv'
+HATs_matrix[11, 0] = -1  #0_medulla mv is covered by medulla
+HATs_matrix[11, 1] = 2  #1_cortex
+
+HATs_matrix[11, 5] = 2  #5_dt
+HATs_matrix[11, 6] = 2  #6_pt
+HATs_matrix[11, 7] = 2  #7_cap
+HATs_matrix[11, 8] = 2  #8_tuft
+HATs_matrix[11, 9] = 2  #9_art
+HATs_matrix[11, 10] = 2  #10_ptc
+
+HATs_matrix[11, 12] = 2  #12_pod
+HATs_matrix[11, 13] = 2  #13_mes
+HATs_matrix[11, 14] = 2  #14_smooth
+
+'12_pod'
+HATs_matrix[12, 0] = 2  #0_medulla
+HATs_matrix[12, 1] = -1  #1_cortex  pod is covered by cortex but don't know between in/middle/out
+
+HATs_matrix[12, 5] = 2  #5_dt
+HATs_matrix[12, 6] = 2  #6_pt
+HATs_matrix[12, 7] = -1  #7_cap     pod is covered by cap
+HATs_matrix[12, 8] = -1  #8_tuft    pod is covered by tuft
+HATs_matrix[12, 9] = 2  #9_art
+HATs_matrix[12, 10] = 2  #10_ptc
+HATs_matrix[12, 11] = 2  #11_mv
+
+HATs_matrix[12, 13] = 2  #13_mes
+HATs_matrix[12, 14] = 2  #14_smooth
+
+'13_mes'
+HATs_matrix[13, 0] = 2  #0_medulla
+HATs_matrix[13, 1] = -1  #1_cortex  pod is covered by cortex but don't know between in/middle/out
+
+HATs_matrix[13, 5] = 2  #5_dt
+HATs_matrix[13, 6] = 2  #6_pt
+HATs_matrix[13, 7] = -1  #7_cap     med is covered by cap
+HATs_matrix[13, 8] = -1  #8_tuft    med is covered by tuft
+HATs_matrix[13, 9] = 2  #9_art
+HATs_matrix[13, 10] = 2  #10_ptc
+HATs_matrix[13, 11] = 2  #11_mv
+
+HATs_matrix[13, 12] = 2  #12_pod
+HATs_matrix[13, 14] = 2  #14_smooth
+
+'14_smooth'
+HATs_matrix[14, 5] = 2  #5_dt
+HATs_matrix[14, 6] = 2  #6_pt
+HATs_matrix[14, 7] = 2  #7_cap
+HATs_matrix[14, 8] = 2  #8_tuft
+HATs_matrix[14, 9] = -1  #9_art     smooth is covered by art
+HATs_matrix[14, 10] = 2  #10_ptc
+HATs_matrix[14, 11] = 2  #11_mv
+
+HATs_matrix[14, 12] = 2  #12_pod
+HATs_matrix[14, 13] = 2  #13_mes
+```
+
+# How to define Anatomy Loss
+```python
+def HATs_learning(images, labels, batch_size, scales, model, now_task, weight, loss_seg_DICE, loss_seg_CE, term_seg_Dice, term_seg_BCE, term_all, HATs_matrix, semi_ratio, area_ratio):
+
+	for ii in range(len(HATs_matrix[1])):
+		now_task_semi = ii
+		if now_task_semi == now_task:
+			continue
+		now_relative = HATs_matrix[now_task][now_task_semi]
+		now_area_ratio = area_ratio[now_task][now_task_semi]
+
+		if now_relative == 0:
+			continue
+
+		semi_preds = model(images, torch.ones(batch_size).cuda() * now_task_semi, scales)
+
+		'Only use dice rather than bce in semi-supervised learning'
+
+		if now_relative == 1:
+			semi_labels = 1 - labels                        # Background from this label should not have any overlap with the pred, --> 0
+			semi_labels = one_hot_3D(semi_labels.long())
+			semi_seg_Dice, semi_seg_BCE, semi_all = get_loss(images, semi_preds, semi_labels, weight, loss_seg_DICE, loss_seg_CE)
+			term_seg_Dice -= semi_ratio * semi_seg_Dice * now_area_ratio
+			term_all -= semi_ratio * semi_seg_Dice * now_area_ratio
+
+
+		elif now_relative == -1:
+			semi_labels = labels
+			semi_preds = semi_labels.unsqueeze(1).repeat(1,2,1,1) * semi_preds           # Only supervised the regions which have label  --> 1
+			semi_labels = one_hot_3D(semi_labels.long())
+			semi_seg_Dice, semi_seg_BCE, semi_all = get_loss(images, semi_preds, semi_labels, weight, loss_seg_DICE, loss_seg_CE)
+			term_seg_Dice += semi_ratio * semi_seg_Dice * now_area_ratio
+			term_all += semi_ratio * semi_seg_Dice * now_area_ratio
+
+		elif now_relative == 2:
+			semi_labels = labels                            # Foreground from this label should not have any overlap with the pred, --> 0
+			semi_labels = one_hot_3D(semi_labels.long())
+			semi_seg_Dice, semi_seg_BCE, semi_all = get_loss(images, semi_preds, semi_labels, weight, loss_seg_DICE, loss_seg_CE)
+			term_seg_Dice -= semi_ratio * semi_seg_Dice * now_area_ratio
+			term_all -= semi_ratio * semi_seg_Dice * now_area_ratio
+
+	return term_seg_Dice, term_seg_BCE, term_all
 ```
 
 
