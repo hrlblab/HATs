@@ -104,47 +104,7 @@ HATs_matrix[1, 11] = 2  # 11_mv
 HATs_matrix[1, 12] = 1  #12_pod cortex cover pod
 HATs_matrix[1, 13] = 1  #13_mes cortex cover mes
 
-'2_cortexin'
-HATs_matrix[2, 0] = 2  #0_medulla
-HATs_matrix[2, 1] = -1  # 1_cortex cortexin is covered by cortex
-HATs_matrix[2, 3] = 2
-HATs_matrix[2, 4] = 2
-
-'3_cortexmiddle'
-HATs_matrix[3, 0] = 2  #0_medulla
-HATs_matrix[3, 1] = -1  # 1_cortex cortexmiddle is covered by cortex
-HATs_matrix[3, 2] = 2
-HATs_matrix[3, 4] = 2
-
-'4_cortexout'
-HATs_matrix[4, 0] = 2  #0_medulla
-HATs_matrix[4, 1] = -1  # 1_cortex cortexout is covered by cortex
-HATs_matrix[4, 2] = 2
-HATs_matrix[4, 3] = 2
-
-'5_dt'
-HATs_matrix[5, 6] = 2  #6_pt
-HATs_matrix[5, 7] = 2  #7_cap
-HATs_matrix[5, 8] = 2  #8_tuft
-HATs_matrix[5, 9] = 2  #9_art
-HATs_matrix[5, 10] = 2  #10_ptc
-HATs_matrix[5, 11] = 2  #11_mv
-
-HATs_matrix[5, 12] = 2  #12_pod
-HATs_matrix[5, 13] = 2  #13_mes
-HATs_matrix[5, 14] = 2  #14_smooth
-
-'6_pt'
-HATs_matrix[6, 5] = 2  #5_dt
-HATs_matrix[6, 7] = 2  #7_cap
-HATs_matrix[6, 8] = 2  #8_tuft
-HATs_matrix[6, 9] = 2  #9_art
-HATs_matrix[6, 10] = 2  #10_ptc
-HATs_matrix[6, 11] = 2  #11_mv
-
-HATs_matrix[6, 12] = 2  #12_pod
-HATs_matrix[6, 13] = 2  #13_mes
-HATs_matrix[6, 14] = 2  #14_smooth
+......
 
 '7_cap'
 HATs_matrix[7, 0] = 2  #0_medulla
@@ -176,47 +136,7 @@ HATs_matrix[8, 12] = 1  #12_pod   tuft cover pod
 HATs_matrix[8, 13] = 1  #13_mes   tuft cover mes
 HATs_matrix[8, 14] = 2  #14_smooth
 
-'9_art'
-HATs_matrix[9, 5] = 2  #5_dt
-HATs_matrix[9, 6] = 2  #6_pt
-HATs_matrix[9, 7] = 2  #7_cap
-HATs_matrix[9, 8] = 2  #8_tuft
-HATs_matrix[9, 10] = 2  #10_ptc
-HATs_matrix[9, 11] = 2  #11_mv
-
-HATs_matrix[9, 12] = 2  #12_pod
-HATs_matrix[9, 13] = 2  #13_mes
-HATs_matrix[9, 14] = 1  #14_smooth art cover smooth
-
-'10_ptc'
-HATs_matrix[10, 0] = 2  #0_medulla
-HATs_matrix[10, 1] = -1  #1_cortex  PTC is covered by cortex but don't know between in/middle/out
-
-HATs_matrix[10, 5] = 2  #5_dt
-HATs_matrix[10, 6] = 2  #6_pt
-HATs_matrix[10, 7] = 2  #7_cap
-HATs_matrix[10, 8] = 2  #8_tuft
-HATs_matrix[10, 9] = 2  #9_art
-HATs_matrix[10, 11] = 2  #11_mv
-
-HATs_matrix[10, 12] = 2  #12_pod
-HATs_matrix[10, 13] = 2  #13_mes
-HATs_matrix[10, 14] = 2  #14_smooth
-
-'11_mv'
-HATs_matrix[11, 0] = -1  #0_medulla mv is covered by medulla
-HATs_matrix[11, 1] = 2  #1_cortex
-
-HATs_matrix[11, 5] = 2  #5_dt
-HATs_matrix[11, 6] = 2  #6_pt
-HATs_matrix[11, 7] = 2  #7_cap
-HATs_matrix[11, 8] = 2  #8_tuft
-HATs_matrix[11, 9] = 2  #9_art
-HATs_matrix[11, 10] = 2  #10_ptc
-
-HATs_matrix[11, 12] = 2  #12_pod
-HATs_matrix[11, 13] = 2  #13_mes
-HATs_matrix[11, 14] = 2  #14_smooth
+......
 
 '12_pod'
 HATs_matrix[12, 0] = 2  #0_medulla
