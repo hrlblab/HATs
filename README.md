@@ -26,6 +26,47 @@ Our approach entails <br />
 (2) the incorporation of anatomical hierarchies and scale considerations into a unified simple matrix representation for all panoramic entities, <br />
 (3) the adoption of the latest AI foundation model (EfficientSAM) as a feature extraction tool to boost the model’s adaptability, yet eliminating the need for manual prompt generation in conventional segment anything model (SAM). Experimental findings demonstrate that the HATs method offers an efficient and effective strategy for integrating clinical insights and imaging precedents into a unified segmentation model across more than 15 categories. 
 
+## Data Structure
+The directory for both training and validation needs to have the following structure:
+the defination of folder name for each class: {layer_ID}_{class_ID}_{scale_ID}_{class_name}
+Layer ID: 0: regions, 1: functional units, 2: cells
+Class ID: (Ordered by your dataset)
+Scale ID: 0: 5X, 1:10X, 2:20X, 3:40X
+
+```bash
+train
+    └── 0_0_0_medulla
+        └── PAS
+	    └── patch1_img.png
+	    └── patch1_mask.png
+	    └── patch2_img.png
+	    └── patch2_mask.png
+	    ...
+	└── HE
+	    └── patch1_img.png
+	    └── patch1_mask.png
+	    └── patch2_img.png
+	    └── patch2_mask.png
+	    ...
+        └── Stain3
+        └── Stain4
+        ...
+    └── 0_1_0_cortex
+    └── 1_0_1_dt
+    └── 1_1_1_pt
+    ...
+    └── 2_0_2_podocyte
+    └── 2_1_2_mesangial
+    ...
+val
+    └── 0_0_0_medulla
+     ...
+
+test
+    └── 0_0_0_medulla
+     ...
+```
+
 ## Model Training
 1. Use [Dataset_save_csv.py](https://github.com/hrlblab/HATs/blob/main/Dataset_save_csv.py) to generate data list csv.
 1. Use [train_EfficientSAM_HATs.py](https://github.com/hrlblab/HATs/blob/main/train_EfficientSAM_HATs.py) to train the model.
