@@ -27,8 +27,8 @@ Our approach entails <br />
 (3) the adoption of the latest AI foundation model (EfficientSAM) as a feature extraction tool to boost the model’s adaptability, yet eliminating the need for manual prompt generation in conventional segment anything model (SAM). Experimental findings demonstrate that the HATs method offers an efficient and effective strategy for integrating clinical insights and imaging precedents into a unified segmentation model across more than 15 categories. 
 
 ## Data Structure
-The directory for both training and validation needs to have the following structure:  <br />
-the defination of folder name for each class: {layer_ID} _ {class_ID} _ {scale_ID} _ {class_name}  <br />
+The directory for both training and validation must follow the specified structure: <br />
+The definition of the folder name for each class is as follows: {layer_ID} _ {class_ID} _ {scale_ID} _ {class_name}  <br />
 Layer ID: 0: regions, 1: functional units, 2: cells  <br />
 Class ID: (Ordered by your dataset)  <br />
 Scale ID: 0: 5X, 1:10X, 2:20X, 3:40X  <br />
@@ -60,8 +60,7 @@ train
     ...
 val
     └── 0_0_0_medulla
-     ...
-
+    ...
 test
     └── 0_0_0_medulla
      ...
