@@ -271,6 +271,9 @@ test
 ```
 
 
+## Model Weight
+The model weights for PrPSeg and HATs can be downloaded [here](https://drive.google.com/drive/folders/1LVlvp__wFPAgc07YgAkZ7liBV73AY293?usp=sharing). <br />
+
 ## Citation
 ```
 @InProceedings{Deng_2024_CVPR,
